@@ -8,7 +8,7 @@
     height: 100%; 
     margin: 0; 
     padding: 0;
-    overflow-x: hidden; /* Previene barras horizontales de desplazamiento */
+    overflow-x: hidden; 
   }
 
   body {
@@ -17,7 +17,6 @@
     background-color: #f0f0f0;
     padding-top: 50px; 
     position: relative;
-    /* Necesitamos un alto mínimo para que el contenido sea visible */
     min-height: 100vh; 
   }
 
@@ -79,9 +78,9 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    pointer-events: none; /* Permite hacer clic en el contenido debajo */
+    pointer-events: none; 
     overflow: hidden;
-    z-index: 999; /* Asegura que las flores se vean encima de todo */
+    z-index: 999; 
   }
 
   .flower {
@@ -112,7 +111,7 @@
   
   <p class="birthday-message">¡Que tengas un día increíble lleno de alegría y sorpresas mi Mayte bella!</p>
   
-  <img src="https://pm1.aminoapps.com/6454/33d7d740263f915f5c352932997194f411516e8b_hq.jpg" alt="Imagen de cumpleaños Lana del Rey" class="birthday-image">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Lana_Del_Rey_at_the_Met_Gala_2018_2_%28cropped%29.jpg" alt="Imagen de Lana del Rey" class="birthday-image">
   
   <p>¡Que este día sea el comienzo de un año maravilloso! Te amo</p>
 
@@ -123,18 +122,15 @@
     function createFlower() {
       const flower = document.createElement('div');
       flower.classList.add('flower');
-      flowerContainer.appendChild(flower); // Añade al nuevo contenedor fijo
+      flowerContainer.appendChild(flower); 
 
-      // Posición inicial aleatoria en la parte superior (viewport width)
       flower.style.left = Math.random() * 100 + 'vw';
       flower.style.top = -Math.random() * 150 + 'px'; 
 
-      // Tamaño aleatorio
       const size = Math.random() * 15 + 10;
       flower.style.width = size + 'px';
       flower.style.height = size + 'px';
 
-      // Duración de la caída aleatoria
       const duration = Math.random() * 8 + 5;
       flower.style.animationDuration = duration + 's';
 
@@ -145,7 +141,6 @@
       
       flower.style.transform = `rotate(${Math.random() * 360}deg)`;
 
-      // Eliminar la flor una vez que termine la animación
       flower.addEventListener('animationiteration', () => {
         flower.remove();
         createFlower();
