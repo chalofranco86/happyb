@@ -1,156 +1,138 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>¡Feliz Cumpleaños!</title>
-<style>
-  /* --- AJUSTES DE BASE CRUCIALES --- */
-  html, body {
-    height: 100%; 
-    margin: 0; 
-    padding: 0;
-    overflow-x: hidden; 
-  }
+  <title>¡Feliz Cumpleaños!</title>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
 
-  body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    background-color: #f0f0f0;
-    padding-top: 50px; 
-    position: relative;
-    min-height: 100vh; 
-  }
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #f0f0f0;
+      padding-top: 50px;
+      position: relative;
+      min-height: 100vh;
+    }
 
-  /* --- EFECTO DE ANIMACIÓN DE TÍTULO --- */
-  h1 {
-    color: #ff69b4; 
-    animation: pulse 2s infinite;
-  }
+    h1 {
+      color: #ff69b4;
+      animation: pulse 2s infinite;
+    }
 
-  @keyframes pulse {
-    0% {
-      transform: scale(1);
-    }
-    50% {
-      transform: scale(1.05);
-      color: #ff1493;
-    }
-    100% {
-      transform: scale(1);
-    }
-  }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); color: #ff1493; }
+      100% { transform: scale(1); }
+    }
 
-  /* --- ESTILOS DEL CONTENIDO PRINCIPAL --- */
-  .birthday-message {
-    font-size: 24px;
-    color: #333;
-    margin-bottom: 20px;
-    padding: 10px;
-    display: inline-block;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-    transition: box-shadow 0.3s ease-in-out;
-  }
+    .birthday-message {
+      font-size: 24px;
+      color: #333;
+      margin-bottom: 20px;
+      padding: 10px;
+      display: inline-block;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+      transition: box-shadow 0.3s ease-in-out;
+    }
 
-  .birthday-message:hover {
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
-  }
+    .birthday-message:hover {
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+    }
 
-  .birthday-image {
-    max-width: 300px;
-    border-radius: 10px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-    cursor: pointer;
-  }
+    .birthday-image {
+      max-width: 300px;
+      border-radius: 10px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+      cursor: pointer;
+    }
 
-  .birthday-image:hover {
-    transform: scale(1.03);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
-  }
+    .birthday-image:hover {
+      transform: scale(1.03);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+    }
 
-  /* --- EFECTO DE CAÍDA DE FLORES (CSS/JS) --- */
+    #flower-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 999;
+    }
 
-  /* Contenedor fijo para que cubra toda la ventana sin importar el scroll */
-  #flower-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    pointer-events: none; 
-    overflow: hidden;
-    z-index: 999; 
-  }
+    .flower {
+      position: absolute;
+      opacity: 0.8;
+      animation: fall linear infinite;
+      width: 15px;
+      height: 15px;
+      background: #ffb6c1;
+      border-radius: 50%;
+      transform: rotate(45deg);
+    }
 
-  .flower {
-    position: absolute;
-    opacity: 0.8;
-    animation: fall linear infinite;
-    /* Forma y color de pétalo */
-    width: 15px;
-    height: 15px;
-    background: #ffb6c1; 
-    border-radius: 50%; 
-    transform: rotate(45deg); 
-  }
-
-  @keyframes fall {
-    0% {
-      transform: translateY(-100px) rotate(0deg);
-    }
-    100% {
-      transform: translateY(100vh) rotate(720deg);
-    }
-  }
-</style>
+    @keyframes fall {
+      0% { transform: translateY(-100px) rotate(0deg); }
+      100% { transform: translateY(100vh) rotate(720deg); }
+    }
+  </style>
 </head>
 <body>
 
-  <h1>¡Feliz Cumpleaños!</h1>
-  
-  <p class="birthday-message">¡Que tengas un día increíble lleno de alegría y sorpresas mi Mayte bella!</p>
-  
-    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Lana_Del_Rey_at_the_Met_Gala_2018_2_%28cropped%29.jpg" alt="Imagen de Lana del Rey" class="birthday-image">
-  
-  <p>¡Que este día sea el comienzo de un año maravilloso! Te amo</p>
+  <h1>¡Feliz Cumpleaños!</h1>
+  <p class="birthday-message">¡Que tengas un día increíble lleno de alegría y sorpresas mi Mayte bella!</p>
+
+  <img src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Lana_Del_Rey_at_the_Met_Gala_2018_2_%28cropped%29.jpg" 
+       alt="Imagen de Lana del Rey" class="birthday-image">
+
+  <p>¡Que este día sea el comienzo de un año maravilloso! Te amo</p>
 
   <div id="flower-container"></div>
 
-  <script>
+  <script>
     const flowerContainer = document.getElementById('flower-container');
-    function createFlower() {
-      const flower = document.createElement('div');
-      flower.classList.add('flower');
-      flowerContainer.appendChild(flower); 
 
-      flower.style.left = Math.random() * 100 + 'vw';
-      flower.style.top = -Math.random() * 150 + 'px'; 
+    function createFlower() {
+      const flower = document.createElement('div');
+      flower.classList.add('flower');
+      flowerContainer.appendChild(flower);
 
-      const size = Math.random() * 15 + 10;
-      flower.style.width = size + 'px';
-      flower.style.height = size + 'px';
+      flower.style.left = Math.random() * 100 + 'vw';
+      flower.style.top = -Math.random() * 150 + 'px';
 
-      const duration = Math.random() * 8 + 5;
-      flower.style.animationDuration = duration + 's';
+      const size = Math.random() * 15 + 10;
+      flower.style.width = size + 'px';
+      flower.style.height = size + 'px';
 
-      flower.style.animationDelay = Math.random() * 5 + 's';
+      const duration = Math.random() * 8 + 5;
+      flower.style.animationDuration = duration + 's';
+      flower.style.animationDelay = Math.random() * 5 + 's';
 
-      const colors = ['#ffb6c1', '#ffc0cb', '#ffe4e1', '#fff0f5', '#f0f8ff'];
-      flower.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-      
-      flower.style.transform = `rotate(${Math.random() * 360}deg)`;
+      const colors = ['#ffb6c1', '#ffc0cb', '#ffe4e1', '#fff0f5', '#f0f8ff'];
+      flower.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+      flower.style.transform = `rotate(${Math.random() * 360}deg)`;
 
-      flower.addEventListener('animationiteration', () => {
-        flower.remove();
-        createFlower();
-      });
-    }
+      flower.addEventListener('animationiteration', () => {
+        flower.remove();
+        createFlower();
+      });
+    }
 
-    for (let i = 0; i < 30; i++) {
-      createFlower();
-    }
-  </script>
+    for (let i = 0; i < 30; i++) {
+      createFlower();
+    }
+  </script>
 
 </body>
 </html>
+
