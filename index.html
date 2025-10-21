@@ -3,13 +3,18 @@
 <head>
 <title>¡Feliz Cumpleaños!</title>
 <style>
+  html, body {
+    height: 100%; /* Asegura que el html y body tomen toda la altura del viewport */
+    margin: 0; /* Elimina el margen predeterminado del body */
+  }
+
   body {
     font-family: Arial, sans-serif;
     text-align: center;
     background-color: #f0f0f0;
-    margin-top: 50px;
+    padding-top: 50px;
     overflow: hidden; /* Oculta las flores antes de que aparezcan por arriba */
-    position: relative; /* Para posicionar las flores correctamente */
+    position: relative; /* Esencial para posicionar las flores correctamente */
   }
   h1 {
     color: #ff69b4; /* Color rosa */
@@ -61,21 +66,16 @@
   /* Estilos para las flores que caen */
   .flower {
     position: absolute;
-    background-color: #ffb6c1; /* Color rosa claro */
-    border-radius: 50%; /* Para simular la forma de un pétalo o confeti redondo */
     opacity: 0.8;
     animation: fall linear infinite;
-    z-index: -1; /* Para que estén detrás del contenido principal */
-  }
-  .flower.petal { /* Podríamos usar esto para formas más complejas si quisiéramos */
+    z-index: -1;
     width: 15px;
     height: 15px;
     background: radial-gradient(circle at 30% 30%, #ff69b4 0%, #ff69b4 40%, transparent 50%, transparent 100%);
-    background-size: 100% 100%;
-    transform: rotate(45deg);
-    border-radius: 0;
+    background-color: #ffb6c1; 
+    border-radius: 50%; 
+    transform: rotate(45deg); 
   }
-
 
   @keyframes fall {
     0% {
@@ -93,7 +93,7 @@
   
   <p class="birthday-message">¡Que tengas un día increíble lleno de alegría y sorpresas mi Mayte bella!</p>
   
-  <img src="https://via.placeholder.com/300x200" alt="Imagen de cumpleaños" class="birthday-image">
+    <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Faminoapps.com%2Fc%2Flana-del-rey-2%2Fpage%2Fblog%2Fhappy-birthday-lana%2FGQxQ_6gHnuJD36wNxrjdWYnv10Jpqe2kdZ&psig=AOvVaw2rmv-Yr1cFI2gmCNag6i_K&ust=1761111381939000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCMCi66TJtJADFQAAAAAdAAAAABBM" alt="Imagen de cumpleaños" class="birthday-image">
   
   <p>¡Que este día sea el comienzo de un año maravilloso! Te amo</p>
 
@@ -103,34 +103,29 @@
       flower.classList.add('flower');
       document.body.appendChild(flower);
 
-      // Posición inicial aleatoria en la parte superior
       flower.style.left = Math.random() * 100 + 'vw';
-      flower.style.top = -Math.random() * 100 + 'px'; // Inicia un poco fuera de la pantalla
+      flower.style.top = -Math.random() * 150 + 'px';
 
-      // Tamaño aleatorio
-      const size = Math.random() * 15 + 10; // entre 10px y 25px
+      const size = Math.random() * 15 + 10;
       flower.style.width = size + 'px';
       flower.style.height = size + 'px';
 
-      // Duración de la caída aleatoria
-      const duration = Math.random() * 8 + 5; // entre 5s y 13s
+      const duration = Math.random() * 8 + 5;
       flower.style.animationDuration = duration + 's';
 
-      // Retraso de animación aleatorio para que no caigan todas juntas
       flower.style.animationDelay = Math.random() * 5 + 's';
 
-      // Color aleatorio (tonos de rosa y blanco)
       const colors = ['#ffb6c1', '#ffc0cb', '#ffe4e1', '#fff0f5', '#f0f8ff'];
       flower.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
       
-      // Eliminar la flor una vez que termine la animación
+      flower.style.transform = `rotate(${Math.random() * 360}deg)`;
+
       flower.addEventListener('animationiteration', () => {
         flower.remove();
-        createFlower(); // Crea una nueva para un flujo continuo
+        createFlower();
       });
     }
 
-    // Crear varias flores inicialmente
     for (let i = 0; i < 30; i++) {
       createFlower();
     }
