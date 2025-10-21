@@ -3,21 +3,27 @@
 <head>
 <title>¡Feliz Cumpleaños!</title>
 <style>
+  /* --- AJUSTES DE BASE CRUCIALES --- */
   html, body {
-    height: 100%; /* Asegura que el html y body tomen toda la altura del viewport */
-    margin: 0; /* Elimina el margen predeterminado del body */
+    height: 100%; 
+    margin: 0; 
+    padding: 0;
+    overflow-x: hidden; /* Previene barras horizontales de desplazamiento */
   }
 
   body {
     font-family: Arial, sans-serif;
     text-align: center;
     background-color: #f0f0f0;
-    padding-top: 50px;
-    overflow: hidden; /* Oculta las flores antes de que aparezcan por arriba */
-    position: relative; /* Esencial para posicionar las flores correctamente */
+    padding-top: 50px; 
+    position: relative;
+    /* Necesitamos un alto mínimo para que el contenido sea visible */
+    min-height: 100vh; 
   }
+
+  /* --- EFECTO DE ANIMACIÓN DE TÍTULO --- */
   h1 {
-    color: #ff69b4; /* Color rosa */
+    color: #ff69b4; 
     animation: pulse 2s infinite;
   }
 
@@ -34,6 +40,7 @@
     }
   }
 
+  /* --- ESTILOS DEL CONTENIDO PRINCIPAL --- */
   .birthday-message {
     font-size: 24px;
     color: #333;
@@ -63,16 +70,28 @@
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
   }
 
-  /* Estilos para las flores que caen */
+  /* --- EFECTO DE CAÍDA DE FLORES (CSS/JS) --- */
+
+  /* Contenedor fijo para que cubra toda la ventana sin importar el scroll */
+  #flower-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none; /* Permite hacer clic en el contenido debajo */
+    overflow: hidden;
+    z-index: 999; /* Asegura que las flores se vean encima de todo */
+  }
+
   .flower {
     position: absolute;
     opacity: 0.8;
     animation: fall linear infinite;
-    z-index: -1;
+    /* Forma y color de pétalo */
     width: 15px;
     height: 15px;
-    background: radial-gradient(circle at 30% 30%, #ff69b4 0%, #ff69b4 40%, transparent 50%, transparent 100%);
-    background-color: #ffb6c1; 
+    background: #ffb6c1; 
     border-radius: 50%; 
     transform: rotate(45deg); 
   }
@@ -93,23 +112,29 @@
   
   <p class="birthday-message">¡Que tengas un día increíble lleno de alegría y sorpresas mi Mayte bella!</p>
   
-    <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Faminoapps.com%2Fc%2Flana-del-rey-2%2Fpage%2Fblog%2Fhappy-birthday-lana%2FGQxQ_6gHnuJD36wNxrjdWYnv10Jpqe2kdZ&psig=AOvVaw2rmv-Yr1cFI2gmCNag6i_K&ust=1761111381939000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCMCi66TJtJADFQAAAAAdAAAAABBM" alt="Imagen de cumpleaños" class="birthday-image">
+  <img src="https://pm1.aminoapps.com/6454/33d7d740263f915f5c352932997194f411516e8b_hq.jpg" alt="Imagen de cumpleaños Lana del Rey" class="birthday-image">
   
   <p>¡Que este día sea el comienzo de un año maravilloso! Te amo</p>
 
+  <div id="flower-container"></div>
+
   <script>
+    const flowerContainer = document.getElementById('flower-container');
     function createFlower() {
       const flower = document.createElement('div');
       flower.classList.add('flower');
-      document.body.appendChild(flower);
+      flowerContainer.appendChild(flower); // Añade al nuevo contenedor fijo
 
+      // Posición inicial aleatoria en la parte superior (viewport width)
       flower.style.left = Math.random() * 100 + 'vw';
-      flower.style.top = -Math.random() * 150 + 'px';
+      flower.style.top = -Math.random() * 150 + 'px'; 
 
+      // Tamaño aleatorio
       const size = Math.random() * 15 + 10;
       flower.style.width = size + 'px';
       flower.style.height = size + 'px';
 
+      // Duración de la caída aleatoria
       const duration = Math.random() * 8 + 5;
       flower.style.animationDuration = duration + 's';
 
@@ -120,6 +145,7 @@
       
       flower.style.transform = `rotate(${Math.random() * 360}deg)`;
 
+      // Eliminar la flor una vez que termine la animación
       flower.addEventListener('animationiteration', () => {
         flower.remove();
         createFlower();
